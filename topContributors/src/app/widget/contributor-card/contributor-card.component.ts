@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Contributor } from 'src/app/model/contributor';
 
 @Component({
   selector: 'app-contributor-card',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contributor-card.component.scss']
 })
 export class ContributorCardComponent implements OnInit {
+
+  @Input() contributor: Contributor = new Contributor();
 
   constructor() { }
 

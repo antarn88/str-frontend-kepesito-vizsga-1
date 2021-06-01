@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Contributor } from 'src/app/model/contributor';
+import { ContributorService } from 'src/app/service/contributor.service';
 
 @Component({
   selector: 'app-contributors-browser',
@@ -7,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContributorsBrowserComponent implements OnInit {
 
-  constructor() { }
+  contributorList: Observable<Contributor[]> = this.contributorService.getAll();
+
+  constructor(private contributorService: ContributorService) { }
 
   ngOnInit(): void {
   }
