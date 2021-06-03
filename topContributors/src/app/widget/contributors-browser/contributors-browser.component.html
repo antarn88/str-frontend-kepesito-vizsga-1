@@ -1,5 +1,8 @@
-<app-contributor-card></app-contributor-card>
-
-<!-- <div *ngFor="let contributor of contributorList | async">
-  <p>{{ contributor.login }}, {{ contributor.avatar_url }}, {{ contributor.repos_url }}, {{ contributor.contributions }}</p>
-</div> -->
+<div class="m-4">
+  <h3>Top Contributors</h3>
+  <hr>
+</div>
+<div class="card-container d-flex flex-row flex-wrap justify-content-around">
+  <app-contributor-card [contributor]="contributor" *ngFor="let contributor of contributorList | async">
+  </app-contributor-card>
+</div>

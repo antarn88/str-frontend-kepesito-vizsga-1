@@ -11,7 +11,7 @@ import { ContributorService } from 'src/app/service/contributor.service';
 export class ContributorsBrowserComponent implements OnInit {
 
   contributorList: Observable<Contributor[]> = this.contributorService.getAll();
-
+  
   constructor(private contributorService: ContributorService) { }
 
   ngOnInit(): void {
