@@ -1,6 +1,5 @@
-import { Inject, Injectable, Optional } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 import { Repository } from '../model/repository';
 
 @Injectable({
@@ -8,12 +7,27 @@ import { Repository } from '../model/repository';
 })
 export class RepositoryService {
 
-  constructor(
-    private http: HttpClient,
-    @Inject('apiUrl') @Optional() public apiUrl: string = '',
-  ) { }
+  reposUrl: string = '';
+  newList: Repository[] = [];
 
-  getAll(): Observable<Repository[]> {
-    return this.http.get<Repository[]>(this.apiUrl);
+  constructor(private http: HttpClient) { }
+
+  async getRepositoryList(reposUrl: string): Promise<Repository[]> {
+    this.newList = [];
+    this.reposUrl = reposUrl;
+    const list = await this.http.get<any[]>(this.reposUrl).toPromise();
+
+    list.forEach(item => {
+      this.newList.push({
+        name: item.name,
+        forked: item.fork,
+        stars: item.stargazers_count,
+        updated: item.updated_at
+      });
+    });
+
+    this.newList.sort((a, b) => b.updated.localeCompare(a.updated));
+    return this.newList;
   }
+
 }

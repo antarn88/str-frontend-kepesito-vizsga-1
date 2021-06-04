@@ -13,6 +13,7 @@
     <p>{{ contributor.contributions }} commits</p>
   </div>
   <div class="card-bottom d-flex justify-content-center">
-    <button class="btn btn-outline-primary mb-2">VIEW REPOSITORIES</button>
+    <app-repositories-modal [reposUrl]="contributor.repos_url" [contributorName]="contributor.login">
+    </app-repositories-modal>
   </div>
 </div>

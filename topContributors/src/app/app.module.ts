@@ -22,7 +22,7 @@ import { RepositoriesModalComponent } from './widget/repositories-modal/reposito
     AppRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
