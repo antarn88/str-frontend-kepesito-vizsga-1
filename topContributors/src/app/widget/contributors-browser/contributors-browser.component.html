@@ -1,8 +1,10 @@
 <div class="m-4">
-  <h3>Top Contributors</h3>
+  <h5>Top Contributors</h5>
   <hr>
 </div>
-<div class="card-container d-flex flex-row flex-wrap justify-content-around">
-  <app-contributor-card [contributor]="contributor" *ngFor="let contributor of contributorList | async">
+<div class="card-container d-flex flex-row flex-wrap justify-content-around" infiniteScroll [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+  <app-contributor-card [contributor]="contributor"
+    *ngFor="let contributor of contributorList | async | slice:startItem:endItem">
   </app-contributor-card>
 </div>

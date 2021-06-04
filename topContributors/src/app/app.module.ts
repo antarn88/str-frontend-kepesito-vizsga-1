@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ToastrModule } from 'ngx-toastr';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContributorsBrowserComponent } from './widget/contributors-browser/contributors-browser.component';
@@ -23,6 +24,7 @@ import { RepositoriesModalComponent } from './widget/repositories-modal/reposito
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     HttpClientModule,
+    InfiniteScrollModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

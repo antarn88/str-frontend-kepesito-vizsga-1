@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Repository } from '../model/repository';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,22 @@ export class RepositoryService {
   reposUrl: string = '';
   newList: Repository[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private toastr: ToastrService
+  ) { }
 
   async getRepositoryList(reposUrl: string): Promise<Repository[]> {
     this.newList = [];
+    let list = [];
     this.reposUrl = reposUrl;
-    const list = await this.http.get<any[]>(this.reposUrl).toPromise();
+
+    try {
+      list = await this.http.get<any[]>(this.reposUrl).toPromise();
+    }
+    catch (error) {
+      this.toastr.error(error.message, 'Error', { timeOut: 10000 });
+    }
 
     list.forEach(item => {
       this.newList.push({
