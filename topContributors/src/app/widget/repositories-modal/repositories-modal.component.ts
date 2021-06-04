@@ -23,7 +23,7 @@ export class RepositoriesModalComponent implements OnInit {
 
   async onClick(longContent: any): Promise<void> {
     this.modalContentList = [];
-    const list = await this.repositoryService.getRepositoryList(this.reposUrl);
+    const list = await this.repositoryService.getRepositoryList(`${this.reposUrl}?page=1&per_page=500`);
 
     for (const item of list) {
       const repo = `Repository name: ${item.name}, Forked: ${item.forked}, Stars: ${item.stars}, Updated: ${item.updated}`;
@@ -32,7 +32,6 @@ export class RepositoriesModalComponent implements OnInit {
 
     this.modalService.open(longContent, { scrollable: true });
   }
-
 
 }
 

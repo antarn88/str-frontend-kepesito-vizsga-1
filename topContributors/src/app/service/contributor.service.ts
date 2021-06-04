@@ -8,7 +8,7 @@ import { Contributor } from '../model/contributor';
 })
 export class ContributorService {
 
-  apiUrl = 'https://api.github.com/repos/angular/angular/contributors?page=1&per_page=100';
+  apiUrl = 'https://api.github.com/repos/angular/angular/contributors?page=1&per_page=500';
 
   constructor(private http: HttpClient) { }
 
